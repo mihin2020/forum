@@ -1,0 +1,16 @@
+.contour
+{
+   
+    background-color: rgba(238, 238, 240, 0.698); 
+}
+.form_post{
+    height: 450px;
+    border-radius: 20px;
+}
+.pied{
+    height: 40px;
+}
+.couleur{
+    background-color: rgba(234, 234, 238, 0.534);
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7); 
+}

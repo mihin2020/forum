@@ -18,8 +18,8 @@ if(isset($_POST['utilisateur']) && isset($_POST['email']) && isset($_POST['passe
         if(filter_var($email, FILTER_VALIDATE_EMAIL)){
              if($passe == $passe2){ // verification des mots de passe
 
-                   $passe = password_hash($passe, PASSWORD_BCRYPT); 
-                   $passe2 = password_hash($passe2, PASSWORD_BCRYPT); 
+                $passe = password_hash($passe, PASSWORD_BCRYPT); 
+                $passe2 = password_hash($passe2, PASSWORD_BCRYPT); 
 
                      $insert = $bdd->prepare('INSERT INTO user_admin (utilisateur, email, passe,passe2) VALUES(:utilisateur,:email, :passe, :passe2)');// insertion dans la base de donnée
                      $insert->execute(array(

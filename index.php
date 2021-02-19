@@ -1,3 +1,9 @@
+
+<?php
+session_start();   
+  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +29,7 @@
                         ?>
                          <div class="alert alert-success" role="alert">
                      <h4 class=" text-center">FELICITATION</h4>
-                  <p class="text-center">Votre inscription a été effectuée avec succès. <br><a href="con_admi.php"></a></p>
+                  <p class="text-center">Votre inscription a été effectuée avec succès. <br><a href="con_admi.php">Acceder à la page de connexion</a></p>
                         </div>
                         <?php
                         break;
