@@ -11,15 +11,15 @@ session_start();
     $sujet = htmlspecialchars($_POST['sujet']);
     $message = htmlspecialchars($_POST['message']);
 
-  $insert = $bdd->prepare('INSERT INTO poster (nom, prenom, categorie,sujet ,message) VALUES(:nom, :prenom,:categorie, :sujet, :message)');
+    $insert = $bdd->prepare('INSERT INTO poster (nom, prenom, categorie,sujet ,message) VALUES(:nom, :prenom,:categorie, :sujet, :message)');
     $insert->execute(array(
     'nom' => $nom,
     'prenom' => $prenom,
     'categorie' => $categorie,
     'sujet' => $sujet,
-    'message' => $message));
+    'message' => $message))
 
-}
+;}
 ?>
 <!DOCTYPE html>
 <html lang="en">

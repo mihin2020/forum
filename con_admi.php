@@ -1,42 +1,43 @@
 <?php
 session_start();
-?>
-<!DOCTYPE html>
-<html lang="en">
+?><!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/style.css">
-    <title>Connexion admin</title>
+	<title>Connexion administrateur</title>
+	<link rel="stylesheet" type="text/css" href="styles/connect.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	
+	<script src="font-awesome-4.7.0/css/font-awesome.min.css"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>          
-    <div>
-        <h2 class="text-center text-white text-uppercase display-3 mt-4 font-weight-bold">Groupe Lac Soft</h2>
-    </div>
-    <div class="text-center text-white mt-5 text-uppercase font-weight-bold
-">Veuillez vous authentifier!!!</div>
-    <div class="login centre_forum">
-    <?php 
+<body class="bg-light">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6 position">
+				<img src="img/img1.png" width="700px" height="550px" alt="">
+			</div>
+			<div class="col-md-6 position1">
+			<?php 
                 if(isset($_GET['login_err']))
                 {
                     $err = htmlspecialchars($_GET['login_err']);
-
                     switch($err)
                     {
-                        case 'passe':
+                		case 'passe':
                         ?>
-                            <div class="alert alert-danger">
-                                <strong>Erreur</strong> mot de passe incorrect
-                            </div>
+                        <div class="alert alert-danger ">
+                     		  <div class="text-center">
+							   Erreur!!!! mot de passe incorrect
+							   </div>
+                        </div>
                         <?php
                         break;
 
                         case 'email':
                         ?>
-                            <div class="alert alert-danger">
-                                <strong>Erreur</strong> email incorrect
+                            <div class="alert alert-danger ">
+                               <div class="text-center"> Erreur email incorrect</div>
                             </div>
                         <?php
                         break;
@@ -44,23 +45,44 @@ session_start();
                         case 'already':
                         ?>
                             <div class="alert alert-danger">
-                                <strong>Erreur</strong> compte non existant
+                               <div class="text-center">
+							   <strong>Erreur</strong> compte  inexistant
+							  <div><a href="index.php"  class="text-center font-weight-bold">Veuillez vous inscrire!!!Merci</a></div> 
+							   </div>
                             </div>
                         <?php
                         break;
                     }
                 }
-                ?> 
-        <h1 class="text-uppercase font-weight-bold">Connexion</h1>
-        <form action="con_traitement.php" method="post">
-            <input type="email" name="email" placeholder="E-mail" required="required" class="font-weight-bold"/>
-            <input type="password" name="passe" placeholder="Mot de passe" required="required"  class="font-weight-bold"/>
-            <button type="submit" class="btn btn-primary btn-block btn-large">Se connecter</button>
-        </form>
-        
-    </div>
-    <!--<footer>
-        <p class="pied text-center text-white">© Copyright 2021.| Design by Groupe 5</p>
-    </footer>-->
+             ?> 
+				<div class="login-content">
+					<form  class="ml-5" action="con_traitement.php" method="POST">
+						<img src="img/avatar.png">
+						<h3 class="title font-weight-bold">Connectez vous a l'espace administrateur</h3>
+						   <div class="input-div one">
+							  <div class="i">
+								 <i class="fas fa-user"></i>
+							  </div>
+							  <div class="div">
+								 <h5>Email</h5>
+								 <input type="email" name="email"  class="input"> <!--completer name et action-->
+							  </div>
+						   </div>
+						   <div class="input-div pass">
+							  <div class="i"> 
+								 <i class="fas fa-lock"></i>
+							  </div>
+							  <div class="div">
+								 <h5>Mot de passe</h5>
+								 <input type="password" name="passe" class="input">
+						   </div>
+						</div>
+						<input type="submit" class="bt" value="Se connecter">
+					</form>
+					</div>
+			</div>	
+	   </div>
+	</div>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

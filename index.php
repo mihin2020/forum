@@ -17,8 +17,8 @@ session_start();
 <body>          
     <div>
         <h2 class="text-center text-white text-uppercase display-3 mt-4 font-weight-bold">Groupe Lac Soft</h2>
-    </div>
-   <?php 
+    </div>/
+  <?php 
                 if(isset($_GET['reg_err']))
                 {
                     $err = htmlspecialchars($_GET['reg_err']);

@@ -1,6 +1,0 @@
-Options All
-AuthType "Basic"
-AuthName "Protected Access"
-AuthUserFile "/laragon/www/forum-socre/utilisateur/.htpasswd"
-require valid-user
-

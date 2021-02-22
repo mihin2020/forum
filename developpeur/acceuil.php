@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start();    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/acceuil.css">
+    
     <title>Acceuil</title>
 </head>
 
@@ -32,6 +33,26 @@ session_start();
         $nbre = $result1->rowCount();
  }
 ?>
+
+
+<?php //traitement des reponses
+ require_once 'config_admi.php';
+ if(isset($_POST['nom']) && isset($_POST['prenom'])  && isset($_POST['contenu'])) 
+{
+    $nom = htmlspecialchars($_POST['nom']);
+    $prenom = htmlspecialchars($_POST['prenom']);
+    $contenu = htmlspecialchars($_POST['contenu']);
+
+  $insert = $bdd->prepare('INSERT INTO reponse (nom, prenom, contenu) VALUES(:nom, :prenom,:contenu)');
+        $insert->execute(array(
+        'nom' => $nom,
+        'prenom' => $prenom,
+        'contenu' => $contenu, ));
+
+}
+?>
+
+
 <body class="bg-white">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light contour">
@@ -141,8 +162,6 @@ while($ligne = $result1->fetch()) {
 }
 */
 ?>
-   
-
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -159,16 +178,16 @@ while($ligne = $result1->fetch()) {
                               <div class=row>
                               <div class="form-group col-6">
                                 <label for="" class="col-form-label text-info font-weight-bold">Nom</label>
-                                <input type="text" name="nom" class="form-control" id="recipient-name">
+                                <input type="text" name="nom" required pattern="[A-Za-z]{2,9}" class="form-control" id="recipient-name">
                               </div>
                               <div class="form-group col-6">
                                 <label for="" class="col-form-label text-info font-weight-bold">Prénom</label>
-                                <input type="text" name="prenom" class="form-control" id="recipient-name">
+                                <input type="text" name="prenom"required pattern="[A-Za-z]{,20}" class="form-control" id="recipient-name">
                               </div>
                               </div>
                               <div class="form-group">
                                 <label for="message-text"  class="col-form-label text-info font-weight-bold">Message:</label>
-                                <textarea class="form-control" name="contenu" id="message-text"></textarea>
+                                <textarea class="form-control"  name="contenu" id="message-text"></textarea>
                               </div>
                               <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
@@ -176,7 +195,6 @@ while($ligne = $result1->fetch()) {
                           </div>
                             </form>
                           </div>
-                          
                         </div>
                       </div>
                     </div>
@@ -185,16 +203,9 @@ while($ligne = $result1->fetch()) {
          </div>
      </div>
  </div>
-
 <?php 
 }
-
 ?>
-
-
-
-
-
 
  <footer>
         <div class="container-fluid bg-info pied mt-4">
@@ -202,19 +213,18 @@ while($ligne = $result1->fetch()) {
                 <h6 class="text-center font-weight-bold text-white ">© Copyright 2021.| Design by Groupe 5</h6>
             </div>
         </div>
-    </footer>
+</footer>
 
   <script src="js/main.js"></script>
   <script src="js/jquery-3.5.1.min.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-  
+ 
 
     <script>
               function myFunction() {
                 alert("Voulez vous vraiment vous deconnecter?");
               }
-
               function bascule(elem)
               {
               etat=document.getElementById(elem).style.visibility;
@@ -223,24 +233,14 @@ while($ligne = $result1->fetch()) {
               }
 
               $('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('Proposition de reponses ' + recipient)
-  modal.find('.modal-body input').val(recipient)
+              var button = $(event.relatedTarget)
+              var recipient = button.data('whatever') 
+              var modal = $(this)
+              modal.find('.modal-title').text('Proposition de reponses ' + recipient)
+              modal.find('.modal-body input').val(recipient)
 })
 
     </script>
-    
-
-
-
-
-
-
-
 <style>
   .post{
     border-radius:20px;

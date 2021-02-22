@@ -110,7 +110,7 @@
 
 <?php
  
-    $result = $bdd->query("SELECT * FROM user_dev ORDER BY utilisateur ASC");
+    $result = $bdd->query("SELECT * FROM user_dev ORDER BY utilisateur DESC");
     if (!$result){
         echo"la recuperation a echoue";
     }else{
